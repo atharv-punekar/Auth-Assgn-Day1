@@ -1,4 +1,4 @@
-# 📘 Mini JWT-Based Authentication System
+# Mini JWT-Based Authentication System
 
 A minimal authentication system built using **Express.js** and **JWT (JSON Web Tokens)**.
 
@@ -10,7 +10,7 @@ This project demonstrates:
 * Signature verification
 * Minimal HTML UI for demonstration
 
-# 📌 Project Overview
+# Project Overview
 
 This system allows:
 
@@ -54,7 +54,7 @@ This system allows:
 
 ---
 
-# 📂 File Explanations
+# File Explanations
 
 ---
 
@@ -72,7 +72,7 @@ This system allows:
 
 Contains:
 
-### 1️⃣ generateToken(userId)
+### generateToken(userId)
 
 Uses:
 
@@ -88,7 +88,7 @@ Creates JWT with:
 
 ---
 
-### 2️⃣ validateToken(token)
+### validateToken(token)
 
 Uses:
 
@@ -181,7 +181,7 @@ Uses:
 
 ---
 
-# 🔐 How JWT Works
+# How JWT Works
 
 A JWT consists of 3 parts:
 
@@ -189,7 +189,7 @@ A JWT consists of 3 parts:
 HEADER.PAYLOAD.SIGNATURE
 ```
 
-### 1️⃣ Header
+### Header
 
 Contains:
 
@@ -202,7 +202,7 @@ Contains:
 
 ---
 
-### 2️⃣ Payload
+### Payload
 
 Contains claims:
 
@@ -217,7 +217,7 @@ Contains claims:
 
 ---
 
-### 3️⃣ Signature
+### Signature
 
 Created using:
 
@@ -249,7 +249,7 @@ http://localhost:4000/index.html
 
 ---
 
-# 🧪 Demo Flow (For Mentor Presentation)
+# Demo Flow (For Mentor Presentation)
 
 ### ✔ Step 1: Generate Token
 
