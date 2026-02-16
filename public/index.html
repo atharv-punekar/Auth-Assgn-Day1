@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JWT - Auth</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .box {
+      width: 400px;
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 6px 0;
+    }
+    button {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    textarea { height: 80px; }
+  </style>
+</head>
+<body>
+
+<h2>Mini JWT Authentication System</h2>
+
+<!-- Generate Token -->
+<div class="box">
+  <h3>Generate JWT</h3>
+  <input id="userId" type="text" placeholder="Enter User ID">
+  <button onclick="generateToken()">Generate Token</button>
+  <textarea id="generatedToken" placeholder="Token will appear here..."></textarea>
+</div>
+
+<!-- Validate Token -->
+<div class="box">
+  <h3>Validate JWT</h3>
+  <textarea id="tokenInput" placeholder="Paste token here..."></textarea>
+  <button onclick="validateToken()">Validate Token</button>
+  <p id="validationResult"></p>
+</div>
+
+<script>
+async function generateToken() {
+  const userId = document.getElementById("userId").value;
+
+  const res = await fetch("http://localhost:4000/jwt/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userId })
+  });
+
+  const data = await res.json();
+  document.getElementById("generatedToken").value = data.token;
+}
+
+async function validateToken() {
+  const token = document.getElementById("tokenInput").value;
+
+  const res = await fetch("http://localhost:4000/jwt/validate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ token })
+  });
+
+  const data = await res.json();
+
+  if (data.message === "Token Valid") {
+    document.getElementById("validationResult").innerText =
+      "Token Valid\nClaims:\n" + JSON.stringify(data.claims, null, 2);
+  } else {
+    document.getElementById("validationResult").innerText =
+      "Token Invalid\nReason: " + data.error;
+  }
+}
+</script>
+
+</body>
+</html>
